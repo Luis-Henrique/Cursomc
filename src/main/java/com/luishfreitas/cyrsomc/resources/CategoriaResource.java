@@ -13,6 +13,7 @@ import com.luishfreitas.cyrsomc.domain.Categoria;
 @RequestMapping(value = "/categorias")
 public class CategoriaResource {
 	
+	//expoe com verbo http
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Categoria> listar() {
 		
