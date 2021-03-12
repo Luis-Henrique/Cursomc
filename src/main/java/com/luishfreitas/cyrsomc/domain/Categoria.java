@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 //classe vai ser uma entidade do JPA
 @Entity
 public class Categoria implements Serializable {
@@ -22,7 +24,10 @@ public class Categoria implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-
+	
+	//poder serelizar produtos e vem os objetos
+	@JsonManagedReference
+	//mapeamento muitos para muitos já mapeado na outra tabela
 	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<>();
 

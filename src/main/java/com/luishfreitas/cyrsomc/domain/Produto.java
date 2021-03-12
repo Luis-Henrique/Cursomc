@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 //classe vai ser uma entidade do JPA
 @Entity
 public class Produto implements Serializable {
@@ -24,6 +26,8 @@ public class Produto implements Serializable {
 	private String nome;
 	private Double preco;
 
+	//omitir a lista já buscada na outra classe
+	@JsonBackReference
 	//mapeamento com criação de uma outra tabela com as chaves estrangeiras
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
