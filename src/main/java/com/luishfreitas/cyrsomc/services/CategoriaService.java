@@ -21,7 +21,7 @@ public class CategoriaService {
 		Optional<Categoria> obj = repo.findById(id);
 			
 		return Optional.ofNullable(obj.orElseThrow(() -> new ObjectNotFoundException(
-				"Objeto não encontrado: " + id + " Tipo: " + Categoria.class.getName())));
+				"Objeto não encontrado:" + id + " Tipo:" + Categoria.class.getName())));
 	}
 
 }
