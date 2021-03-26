@@ -3,7 +3,6 @@ package com.luishfreitas.cyrsomc.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -16,7 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //classe vai ser uma entidade do JPA
@@ -32,7 +30,7 @@ public class Produto implements Serializable {
 	private Double preco;
 
 	// omitir a lista já buscada na outra classe
-	@JsonBackReference
+	@JsonIgnore
 	// mapeamento com criação de uma outra tabela com as chaves estrangeiras
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))

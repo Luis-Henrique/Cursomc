@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-//entidade outro classe
+//entidade outra classe
 @Embeddable
 public class ItemPedidoPK implements Serializable {
 
