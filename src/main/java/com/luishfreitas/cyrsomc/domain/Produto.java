@@ -91,6 +91,7 @@ public class Produto implements Serializable {
 		this.categorias = categorias;
 	}
 
+	@JsonIgnore
 	public Set<ItemPedido> getProdutos() {
 		return itens;
 	}
