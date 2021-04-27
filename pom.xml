@@ -40,9 +40,10 @@
 			<scope>runtime</scope>
 		</dependency>
 
+<!-- Tag para validacoes deve ser add a partir do spring 2.0 -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
 	</dependencies>
