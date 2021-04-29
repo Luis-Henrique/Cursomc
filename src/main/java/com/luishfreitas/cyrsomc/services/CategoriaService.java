@@ -8,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.luishfreitas.cyrsomc.domain.Categoria;
+import com.luishfreitas.cyrsomc.domain.Categoria;
 import com.luishfreitas.cyrsomc.dto.CategoriaDTO;
 import com.luishfreitas.cyrsomc.repositories.CategoriaRepository;
 import com.luishfreitas.cyrsomc.services.exceptions.DateIntegrityException;
@@ -34,9 +35,12 @@ public class CategoriaService {
 	}
 
 	public Categoria update(Categoria obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		Optional<Categoria> newObj = find(obj.getId());
+		updateData(newObj.get(), obj);
+		return repo.save(newObj.get());
 	}
+
+	
 
 	public void delete(Integer id) {
 		find(id);
@@ -55,5 +59,10 @@ public class CategoriaService {
 
 	public Categoria fromDTO(CategoriaDTO objDto) {
 		return new Categoria(objDto.getId(), objDto.getNome());
+	}
+	
+	private void updateData(Categoria categoria, Categoria obj) {
+		categoria.setNome(obj.getNome());
+		
 	}
 }
