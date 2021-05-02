@@ -2,6 +2,7 @@ package com.luishfreitas.cyrsomc.resources;
 
 
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.luishfreitas.cyrsomc.domain.Cliente;
 import com.luishfreitas.cyrsomc.dto.ClienteDTO;
+import com.luishfreitas.cyrsomc.dto.ClienteNewDTO;
 import com.luishfreitas.cyrsomc.services.ClienteService;
 
 @RestController
@@ -26,6 +29,18 @@ public class ClienteResource {
 	
 	@Autowired
 	ClienteService service;
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto){
+		
+		Cliente obj = service.fromDTO(objDto);
+		service.insert(obj);
+		
+		//pega url de insercao e acrescenta /id
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
 	
 	//expoe com verbo http
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)

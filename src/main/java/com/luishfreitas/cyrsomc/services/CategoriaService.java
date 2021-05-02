@@ -8,7 +8,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.luishfreitas.cyrsomc.domain.Categoria;
-import com.luishfreitas.cyrsomc.domain.Categoria;
 import com.luishfreitas.cyrsomc.dto.CategoriaDTO;
 import com.luishfreitas.cyrsomc.repositories.CategoriaRepository;
 import com.luishfreitas.cyrsomc.services.exceptions.DateIntegrityException;
