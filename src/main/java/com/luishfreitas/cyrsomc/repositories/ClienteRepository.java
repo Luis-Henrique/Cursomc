@@ -2,6 +2,7 @@ package com.luishfreitas.cyrsomc.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.luishfreitas.cyrsomc.domain.Cliente;
 
@@ -10,5 +11,8 @@ import com.luishfreitas.cyrsomc.domain.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
+	//findby e o nome do campo para buscar esse campo do banco
+	@Transactional(readOnly = true)
+	Cliente findByEmail(String email);
 
 }
